@@ -3,7 +3,6 @@ package com.eli.ali;
 import android.content.res.AssetManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,8 +29,6 @@ public class ZhifubaoAct extends AppCompatActivity {
 
     private BillsAdapter mBillsAdapter;
 
-    private List<Bill> mBills;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,19 +39,6 @@ public class ZhifubaoAct extends AppCompatActivity {
         mBillsAdapter = new BillsAdapter(loadBills(), this);
         mBillsList.setLayoutManager(new LinearLayoutManager(this));
         mBillsList.setAdapter(mBillsAdapter);
-
-        AssetManager assetManager = getAssets();
-        String[] assets = null;
-        try {
-            assets = assetManager.list("");
-        } catch (IOException e) {
-        }
-
-        if (assets != null && assets.length > 0) {
-            for (String item : assets) {
-                Log.i(TAG, item);
-            }
-        }
     }
 
     private List<Bill> loadBills() {

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="90dp"
@@ -22,7 +22,7 @@
                 android:layout_gravity="top|center"
                 android:layout_marginTop="5dp"
                 android:src="@drawable/def_shop_icon"
-                app:radius="20dp"/>
+                app:radius="20dp" />
         </FrameLayout>
 
         <LinearLayout
@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:text="果汁吧"
-                android:textColor="#000"/>
+                android:textColor="#000" />
 
             <TextView
                 android:id="@+id/category"
@@ -46,7 +46,7 @@
                 android:layout_marginTop="2dp"
                 android:textSize="10sp"
                 android:text="餐饮美食"
-                android:textColor="#555"/>
+                android:textColor="#555" />
 
             <TextView
                 android:id="@+id/date"
@@ -55,7 +55,7 @@
                 android:layout_marginTop="2dp"
                 android:textSize="10sp"
                 android:text="12-08 15:08"
-                android:textColor="#555"/>
+                android:textColor="#555" />
         </LinearLayout>
 
         <FrameLayout
@@ -68,15 +68,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="right"
                 android:textColor="@android:color/black"
                 android:textSize="17sp"
-                android:text="-48.30"/>
+                android:text="-48.30" />
         </FrameLayout>
     </LinearLayout>
 
     <View
-        android:background="#888"
+        android:background="#2000"
+        android:layout_marginLeft="65dp"
+        android:layout_marginRight="10dp"
         android:layout_width="match_parent"
         android:layout_height="1px" />
 </LinearLayout>

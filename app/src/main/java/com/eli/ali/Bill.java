@@ -1,6 +1,10 @@
 package com.eli.ali;
 
-public class Bill {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+
+public class Bill implements Parcelable {
 
     private String shopName;
 
@@ -8,7 +12,9 @@ public class Bill {
 
     private float amount;
 
-    private String createTime;
+    private String shortDate;
+
+    private String longDate;
 
     private String category;
 
@@ -24,14 +30,32 @@ public class Bill {
 
     private String goodsDetail;
 
-    public Bill(String shopName, String shopIconPath,
-                float amount, String createTime, String category) {
-        this.shopName = shopName;
-        this.shopIconPath = shopIconPath;
-        this.amount = amount;
-        this.createTime = createTime;
-        this.category = category;
+    protected Bill(Parcel in) {
+        shopName = in.readString();
+        shopIconPath = in.readString();
+        amount = in.readFloat();
+        shortDate = in.readString();
+        longDate = in.readString();
+        category = in.readString();
+        hasDetail = in.readByte() != 0;
+        id = in.readString();
+        status = in.readString();
+        payMethod = in.readString();
+        score = in.readString();
+        goodsDetail = in.readString();
     }
+
+    public static final Creator<Bill> CREATOR = new Creator<Bill>() {
+        @Override
+        public Bill createFromParcel(Parcel in) {
+            return new Bill(in);
+        }
+
+        @Override
+        public Bill[] newArray(int size) {
+            return new Bill[size];
+        }
+    };
 
     public String getId() {
         return id;
@@ -97,12 +121,20 @@ public class Bill {
         this.goodsDetail = goodsDetail;
     }
 
-    public String getCreateTime() {
-        return createTime;
+    public String getShortDate() {
+        return shortDate;
     }
 
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
+    public void setShortDate(String shortDate) {
+        this.shortDate = shortDate;
+    }
+
+    public String getLongDate() {
+        return longDate;
+    }
+
+    public void setLongDate(String longDate) {
+        this.longDate = longDate;
     }
 
     public String getCategory() {
@@ -119,5 +151,43 @@ public class Bill {
 
     public void setHasDetail(boolean hasDetail) {
         this.hasDetail = hasDetail;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(shopName);
+        dest.writeString(shopIconPath);
+        dest.writeFloat(amount);
+        dest.writeString(shortDate);
+        dest.writeString(longDate);
+        dest.writeString(category);
+        dest.writeByte((byte) (hasDetail ? 1 : 0));
+        dest.writeString(id);
+        dest.writeString(status);
+        dest.writeString(payMethod);
+        dest.writeString(score);
+        dest.writeString(goodsDetail);
+    }
+
+    @Override
+    public String toString() {
+        return "Bill{" +
+                "shopName='" + shopName + '\'' +
+                ", shopIconPath='" + shopIconPath + '\'' +
+                ", amount=" + amount +
+                ", longDate='" + longDate + '\'' +
+                ", category='" + category + '\'' +
+                ", hasDetail=" + hasDetail +
+                ", id='" + id + '\'' +
+                ", status='" + status + '\'' +
+                ", payMethod='" + payMethod + '\'' +
+                ", score='" + score + '\'' +
+                ", goodsDetail='" + goodsDetail + '\'' +
+                '}';
     }
 }

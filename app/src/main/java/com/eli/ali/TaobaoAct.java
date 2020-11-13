@@ -1,8 +1,8 @@
 package com.eli.ali;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class TaobaoAct extends AppCompatActivity {
 

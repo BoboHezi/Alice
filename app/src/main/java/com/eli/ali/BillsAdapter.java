@@ -1,10 +1,10 @@
 package com.eli.ali;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,10 +15,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
-
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 public class BillsAdapter extends RecyclerView.Adapter<BillsAdapter.BillViewHolder> {
@@ -56,15 +52,29 @@ public class BillsAdapter extends RecyclerView.Adapter<BillsAdapter.BillViewHold
         }
 
         if (!TextUtils.isEmpty(bill.getShopIconPath())) {
-            Bitmap iconBitmap = getBitmap(bill.getShopIconPath());
+            Bitmap iconBitmap = Utils.getBitmap(mContext, bill.getShopIconPath());
             if (iconBitmap != null) {
                 holder.shopIcon.setImageBitmap(iconBitmap);
             }
+        } else {
+            holder.shopIcon.setImageResource(R.drawable.def_shop_icon);
         }
         holder.shopName.setText(bill.getShopName());
         holder.category.setText(bill.getCategory());
-        holder.date.setText(bill.getCreateTime());
+        holder.date.setText(bill.getShortDate());
         holder.amount.setText(bill.getAmount() + "");
+
+        if (bill.isHasDetail()) {
+            holder.itemView.setOnClickListener(view -> {
+                Intent intent = new Intent(mContext, BillDetailAct.class);
+
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("bill", bill);
+                intent.putExtras(bundle);
+
+                mContext.startActivity(intent);
+            });
+        }
     }
 
     class BillViewHolder extends RecyclerView.ViewHolder {
@@ -87,21 +97,5 @@ public class BillsAdapter extends RecyclerView.Adapter<BillsAdapter.BillViewHold
             date = billView.findViewById(R.id.date);
             amount = billView.findViewById(R.id.bill_amount);
         }
-    }
-
-    private Bitmap getBitmap(String path) {
-        if (mAssetManager == null) {
-            mAssetManager = mContext.getAssets();
-        }
-        InputStream inputStream = null;
-        try {
-            inputStream = mAssetManager.open(path);
-        } catch (IOException e) {
-        }
-        if (inputStream != null) {
-            return BitmapFactory.decodeStream(inputStream);
-        }
-
-        return null;
     }
 }

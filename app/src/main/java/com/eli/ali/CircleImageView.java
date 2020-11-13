@@ -50,7 +50,7 @@ public class CircleImageView extends AppCompatImageView {
         if (null != drawable) {
             Bitmap bitmap = getBitmapFromDrawable(drawable);
             //start 为空处理
-            if (bitmap == null){
+            if (bitmap == null) {
                 super.onDraw(canvas);
                 return;
             }
@@ -68,8 +68,8 @@ public class CircleImageView extends AppCompatImageView {
     public static Bitmap getBitmapFromDrawable(Drawable drawable) {
         int width = drawable.getIntrinsicWidth();
         int height = drawable.getIntrinsicHeight();
-         //start  width and height 必须大于0
-        if (width <=0||height<=0){
+        //start  width and height 必须大于0
+        if (width <= 0 || height <= 0) {
             return null;
         }
         //end
