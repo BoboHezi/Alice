@@ -2,7 +2,6 @@ package com.eli.ali;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -22,8 +21,6 @@ public class BillsAdapter extends RecyclerView.Adapter<BillsAdapter.BillViewHold
     private List<Bill> mBills;
 
     private Context mContext;
-
-    private AssetManager mAssetManager;
 
     public BillsAdapter(List<Bill> bills, Context context) {
         mBills = bills;

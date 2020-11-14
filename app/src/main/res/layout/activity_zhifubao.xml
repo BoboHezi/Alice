@@ -20,8 +20,8 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/bills_head_container"
-        android:layout_above="@id/bills_foot_container">
+        android:layout_above="@id/bills_foot_container"
+        android:layout_below="@id/bills_head_container">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/bills_list"

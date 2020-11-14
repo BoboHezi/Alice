@@ -6,28 +6,28 @@ import android.os.Parcelable;
 
 public class Bill implements Parcelable {
 
+    public static final Creator<Bill> CREATOR = new Creator<Bill>() {
+        @Override
+        public Bill createFromParcel(Parcel in) {
+            return new Bill(in);
+        }
+
+        @Override
+        public Bill[] newArray(int size) {
+            return new Bill[size];
+        }
+    };
     private String shopName;
-
     private String shopIconPath;
-
     private float amount;
-
     private String shortDate;
-
     private String longDate;
-
     private String category;
-
     private boolean hasDetail;
-
     private String id;
-
     private String status;
-
     private String payMethod;
-
     private String score;
-
     private String goodsDetail;
 
     protected Bill(Parcel in) {
@@ -44,18 +44,6 @@ public class Bill implements Parcelable {
         score = in.readString();
         goodsDetail = in.readString();
     }
-
-    public static final Creator<Bill> CREATOR = new Creator<Bill>() {
-        @Override
-        public Bill createFromParcel(Parcel in) {
-            return new Bill(in);
-        }
-
-        @Override
-        public Bill[] newArray(int size) {
-            return new Bill[size];
-        }
-    };
 
     public String getId() {
         return id;

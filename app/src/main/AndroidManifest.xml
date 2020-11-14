@@ -11,8 +11,8 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
             android:name=".TaobaoAct"
-            android:label="手机淘宝"
-            android:icon="@mipmap/ic_tb_app">
+            android:icon="@mipmap/ic_tb_app"
+            android:label="手机淘宝">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -21,8 +21,8 @@
 
         <activity
             android:name=".ZhifubaoAct"
-            android:label="支付宝"
-            android:icon="@drawable/appicon_zfb">
+            android:icon="@drawable/appicon_zfb"
+            android:label="支付宝">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

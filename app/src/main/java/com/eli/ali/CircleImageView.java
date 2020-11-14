@@ -44,27 +44,6 @@ public class CircleImageView extends AppCompatImageView {
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     }
 
-    @Override
-    protected void onDraw(Canvas canvas) {
-        Drawable drawable = getDrawable();
-        if (null != drawable) {
-            Bitmap bitmap = getBitmapFromDrawable(drawable);
-            //start 为空处理
-            if (bitmap == null) {
-                super.onDraw(canvas);
-                return;
-            }
-            //end
-            Bitmap b = getRoundBitmapByShader(bitmap, getWidth(), getHeight(), mRadius, mBorderWidth, mBorderColor);
-            final Rect rectSrc = new Rect(0, 0, b.getWidth(), b.getHeight());
-            final Rect rectDest = new Rect(0, 0, getWidth(), getHeight());
-            mPaint.reset();
-            canvas.drawBitmap(b, rectSrc, rectDest, mPaint);
-        } else {
-            super.onDraw(canvas);
-        }
-    }
-
     public static Bitmap getBitmapFromDrawable(Drawable drawable) {
         int width = drawable.getIntrinsicWidth();
         int height = drawable.getIntrinsicHeight();
@@ -110,6 +89,27 @@ public class CircleImageView extends AppCompatImageView {
             canvas.drawRoundRect(rect, radius, radius, boarderPaint);
         }
         return desBitmap;
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        Drawable drawable = getDrawable();
+        if (null != drawable) {
+            Bitmap bitmap = getBitmapFromDrawable(drawable);
+            //start 为空处理
+            if (bitmap == null) {
+                super.onDraw(canvas);
+                return;
+            }
+            //end
+            Bitmap b = getRoundBitmapByShader(bitmap, getWidth(), getHeight(), mRadius, mBorderWidth, mBorderColor);
+            final Rect rectSrc = new Rect(0, 0, b.getWidth(), b.getHeight());
+            final Rect rectDest = new Rect(0, 0, getWidth(), getHeight());
+            mPaint.reset();
+            canvas.drawBitmap(b, rectSrc, rectDest, mPaint);
+        } else {
+            super.onDraw(canvas);
+        }
     }
 
 }
