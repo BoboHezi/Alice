@@ -61,17 +61,15 @@ public class BillsAdapter extends RecyclerView.Adapter<BillsAdapter.BillViewHold
         holder.date.setText(bill.getShortDate());
         holder.amount.setText(bill.getAmount() + "");
 
-        if (bill.isHasDetail()) {
-            holder.itemView.setOnClickListener(view -> {
-                Intent intent = new Intent(mContext, BillDetailAct.class);
+        holder.itemView.setOnClickListener(!bill.isHasDetail() ? null : view -> {
+            Intent intent = new Intent(mContext, BillDetailAct.class);
 
-                Bundle bundle = new Bundle();
-                bundle.putParcelable("bill", bill);
-                intent.putExtras(bundle);
+            Bundle bundle = new Bundle();
+            bundle.putParcelable("bill", bill);
+            intent.putExtras(bundle);
 
-                mContext.startActivity(intent);
-            });
-        }
+            mContext.startActivity(intent);
+        });
     }
 
     class BillViewHolder extends RecyclerView.ViewHolder {

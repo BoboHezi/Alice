@@ -1,16 +1,17 @@
 package com.eli.ali;
 
+import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class TaobaoAct extends AppCompatActivity {
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,12 +19,7 @@ public class TaobaoAct extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.order_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        List<Order> orders = new ArrayList<>();
-        orders.add(new Order("12djfuj"));
-        orders.add(new Order("ry6378"));
-        orders.add(new Order("12dsjdujjfuj"));
-        orders.add(new Order("qwerrt"));
-        orders.add(new Order("12d123334jfuj"));
-        recyclerView.setAdapter(new OrdersAdapter(this, orders));
+        recyclerView.setAdapter(new OrdersAdapter(this,
+                Utils.loadList("orders.json", Order[].class, this)));
     }
 }

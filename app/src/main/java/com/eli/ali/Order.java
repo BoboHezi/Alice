@@ -31,10 +31,9 @@ public class Order implements Parcelable {
     private String zfbOrderId;
     private String createTime;
     private String submissionTime;
-
-    public Order(String shopName) {
-        this.shopName = shopName;
-    }
+    private boolean hasDetail;
+    private float orderPrice;
+    private float pay;
 
     protected Order(Parcel in) {
         shopIcon = in.readString();
@@ -50,6 +49,9 @@ public class Order implements Parcelable {
         zfbOrderId = in.readString();
         createTime = in.readString();
         submissionTime = in.readString();
+        hasDetail = in.readByte() != 0;
+        orderPrice = in.readFloat();
+        pay = in.readFloat();
     }
 
     public String getShopIcon() {
@@ -156,6 +158,30 @@ public class Order implements Parcelable {
         this.submissionTime = submissionTime;
     }
 
+    public boolean isHasDetail() {
+        return hasDetail;
+    }
+
+    public void setHasDetail(boolean hasDetail) {
+        this.hasDetail = hasDetail;
+    }
+
+    public float getOrderPrice() {
+        return orderPrice;
+    }
+
+    public void setOrderPrice(float orderPrice) {
+        this.orderPrice = orderPrice;
+    }
+
+    public float getPay() {
+        return pay;
+    }
+
+    public void setPay(float pay) {
+        this.pay = pay;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -176,6 +202,9 @@ public class Order implements Parcelable {
         dest.writeString(zfbOrderId);
         dest.writeString(createTime);
         dest.writeString(submissionTime);
+        dest.writeByte((byte) (hasDetail ? 1 : 0));
+        dest.writeFloat(orderPrice);
+        dest.writeFloat(pay);
     }
 
     @Override
