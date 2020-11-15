@@ -3,6 +3,7 @@ package com.eli.ali;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,6 +26,8 @@ public class OrderDetailAct extends AppCompatActivity {
     private TextView orderId;
     private TextView zfbOrderId;
     private TextView createDate;
+    private TextView payDate;
+    private TextView deliverDate;
     private TextView submissionDate;
 
     @Override
@@ -48,6 +51,8 @@ public class OrderDetailAct extends AppCompatActivity {
             orderId = findViewById(R.id.order_id);
             zfbOrderId = findViewById(R.id.zfb_order_id);
             createDate = findViewById(R.id.create_date);
+            payDate = findViewById(R.id.pay_date);
+            deliverDate = findViewById(R.id.deliver_date);
             submissionDate = findViewById(R.id.submission_date);
 
             if (!TextUtils.isEmpty(order.getShopIcon())) {
@@ -72,7 +77,24 @@ public class OrderDetailAct extends AppCompatActivity {
             orderId.setText(order.getOrderId());
             zfbOrderId.setText(order.getZfbOrderId());
             createDate.setText(order.getCreateTime());
-            submissionDate.setText(order.getSubmissionTime());
+
+            if (!TextUtils.isEmpty(order.getSubmissionTime())) {
+                submissionDate.setText(order.getSubmissionTime());
+            } else {
+                findViewById(R.id.submission_date_container).setVisibility(View.GONE);
+            }
+
+            if (!TextUtils.isEmpty(order.getPayTime())) {
+                payDate.setText(order.getPayTime());
+            } else {
+                findViewById(R.id.pay_date_container).setVisibility(View.GONE);
+            }
+
+            if (!TextUtils.isEmpty(order.getDeliverTime())) {
+                deliverDate.setText(order.getDeliverTime());
+            } else {
+                findViewById(R.id.deliver_date_container).setVisibility(View.GONE);
+            }
 
             findViewById(R.id.goods_container).setOnClickListener(v -> {
                 startActivity(new Intent(OrderDetailAct.this, OverdueGoodsAct.class));

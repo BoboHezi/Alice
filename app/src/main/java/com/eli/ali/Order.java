@@ -30,10 +30,12 @@ public class Order implements Parcelable {
     private String orderId;
     private String zfbOrderId;
     private String createTime;
-    private String submissionTime;
+    private String payTime;
     private boolean hasDetail;
     private float orderPrice;
     private float pay;
+    private String deliverTime;
+    private String submissionTime;
 
     protected Order(Parcel in) {
         shopIcon = in.readString();
@@ -48,10 +50,12 @@ public class Order implements Parcelable {
         orderId = in.readString();
         zfbOrderId = in.readString();
         createTime = in.readString();
-        submissionTime = in.readString();
+        payTime = in.readString();
         hasDetail = in.readByte() != 0;
         orderPrice = in.readFloat();
         pay = in.readFloat();
+        deliverTime = in.readString();
+        submissionTime = in.readString();
     }
 
     public String getShopIcon() {
@@ -150,12 +154,12 @@ public class Order implements Parcelable {
         this.createTime = createTime;
     }
 
-    public String getSubmissionTime() {
-        return submissionTime;
+    public String getPayTime() {
+        return payTime;
     }
 
-    public void setSubmissionTime(String submissionTime) {
-        this.submissionTime = submissionTime;
+    public void setPayTime(String payTime) {
+        this.payTime = payTime;
     }
 
     public boolean isHasDetail() {
@@ -172,6 +176,22 @@ public class Order implements Parcelable {
 
     public void setOrderPrice(float orderPrice) {
         this.orderPrice = orderPrice;
+    }
+
+    public String getDeliverTime() {
+        return deliverTime;
+    }
+
+    public void setDeliverTime(String deliverTime) {
+        this.deliverTime = deliverTime;
+    }
+
+    public String getSubmissionTime() {
+        return submissionTime;
+    }
+
+    public void setSubmissionTime(String submissionTime) {
+        this.submissionTime = submissionTime;
     }
 
     public float getPay() {
@@ -201,10 +221,12 @@ public class Order implements Parcelable {
         dest.writeString(orderId);
         dest.writeString(zfbOrderId);
         dest.writeString(createTime);
-        dest.writeString(submissionTime);
+        dest.writeString(payTime);
         dest.writeByte((byte) (hasDetail ? 1 : 0));
         dest.writeFloat(orderPrice);
         dest.writeFloat(pay);
+        dest.writeString(deliverTime);
+        dest.writeString(submissionTime);
     }
 
     @Override
@@ -222,7 +244,7 @@ public class Order implements Parcelable {
                 ", orderId='" + orderId + '\'' +
                 ", zfbOrderId='" + zfbOrderId + '\'' +
                 ", createTime='" + createTime + '\'' +
-                ", submissionTime='" + submissionTime + '\'' +
+                ", payTime='" + payTime + '\'' +
                 '}';
     }
 }

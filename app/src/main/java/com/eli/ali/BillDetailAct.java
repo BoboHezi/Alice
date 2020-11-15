@@ -2,6 +2,7 @@ package com.eli.ali;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,9 +16,14 @@ public class BillDetailAct extends AppCompatActivity {
     private TextView mAmount;
     private TextView mStatus;
     private TextView mPayMethod;
+    private TextView mScoreInfo;
     private TextView mDetail;
+    private TextView mAddress;
+    private TextView mLogistics;
     private TextView mDate;
     private TextView mCateGory;
+    private TextView mBillId;
+    private TextView mOrderId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +60,40 @@ public class BillDetailAct extends AppCompatActivity {
 
             mCateGory = findViewById(R.id.category);
             mCateGory.setText(bill.getCategory());
+
+            mBillId = findViewById(R.id.bill_id);
+            mBillId.setText(bill.getId());
+
+            mOrderId = findViewById(R.id.order_id);
+            mOrderId.setText(bill.getOrderId());
+
+            mScoreInfo = findViewById(R.id.score);
+            mAddress = findViewById(R.id.address);
+            mLogistics = findViewById(R.id.logistics);
+
+            if (!TextUtils.isEmpty(bill.getScore())) {
+                mScoreInfo.setText(bill.getScore());
+            } else {
+                findViewById(R.id.score_container).setVisibility(View.GONE);
+            }
+
+            if (!TextUtils.isEmpty(bill.getAddress())) {
+                mAddress.setText(bill.getAddress());
+            } else {
+                findViewById(R.id.address_container).setVisibility(View.GONE);
+            }
+
+            if (!TextUtils.isEmpty(bill.getLogistics())) {
+                mLogistics.setText(bill.getLogistics());
+            } else {
+                findViewById(R.id.logistics_container).setVisibility(View.GONE);
+            }
         }
+    }
+
+    public void onClick(View view) {
+        view.setVisibility(View.GONE);
+        findViewById(R.id.bill_id_container).setVisibility(View.VISIBLE);
+        findViewById(R.id.order_id_container).setVisibility(View.VISIBLE);
     }
 }

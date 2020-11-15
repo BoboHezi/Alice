@@ -29,6 +29,9 @@ public class Bill implements Parcelable {
     private String payMethod;
     private String score;
     private String goodsDetail;
+    private String address;
+    private String logistics;
+    private String orderId;
 
     protected Bill(Parcel in) {
         shopName = in.readString();
@@ -43,6 +46,9 @@ public class Bill implements Parcelable {
         payMethod = in.readString();
         score = in.readString();
         goodsDetail = in.readString();
+        address = in.readString();
+        logistics = in.readString();
+        orderId = in.readString();
     }
 
     public String getId() {
@@ -109,6 +115,30 @@ public class Bill implements Parcelable {
         this.goodsDetail = goodsDetail;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getLogistics() {
+        return logistics;
+    }
+
+    public void setLogistics(String logistics) {
+        this.logistics = logistics;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
     public String getShortDate() {
         return shortDate;
     }
@@ -160,6 +190,9 @@ public class Bill implements Parcelable {
         dest.writeString(payMethod);
         dest.writeString(score);
         dest.writeString(goodsDetail);
+        dest.writeString(address);
+        dest.writeString(logistics);
+        dest.writeString(orderId);
     }
 
     @Override
