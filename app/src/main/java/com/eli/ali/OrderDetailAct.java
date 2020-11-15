@@ -101,4 +101,8 @@ public class OrderDetailAct extends AppCompatActivity {
             });
         }
     }
+
+    public void onClick(View view) {
+        startActivity(new Intent(OrderDetailAct.this, OverdueGoodsAct.class));
+    }
 }

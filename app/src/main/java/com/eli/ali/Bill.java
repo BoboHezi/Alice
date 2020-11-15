@@ -32,6 +32,7 @@ public class Bill implements Parcelable {
     private String address;
     private String logistics;
     private String orderId;
+    private String extraId;
 
     protected Bill(Parcel in) {
         shopName = in.readString();
@@ -49,6 +50,7 @@ public class Bill implements Parcelable {
         address = in.readString();
         logistics = in.readString();
         orderId = in.readString();
+        extraId = in.readString();
     }
 
     public String getId() {
@@ -139,6 +141,14 @@ public class Bill implements Parcelable {
         this.orderId = orderId;
     }
 
+    public String getExtraId() {
+        return extraId;
+    }
+
+    public void setExtraId(String extraId) {
+        this.extraId = extraId;
+    }
+
     public String getShortDate() {
         return shortDate;
     }
@@ -193,6 +203,7 @@ public class Bill implements Parcelable {
         dest.writeString(address);
         dest.writeString(logistics);
         dest.writeString(orderId);
+        dest.writeString(extraId);
     }
 
     @Override

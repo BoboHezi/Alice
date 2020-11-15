@@ -1,5 +1,6 @@
 package com.eli.ali;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -25,12 +26,13 @@ public class BillDetailAct extends AppCompatActivity {
     private TextView mBillId;
     private TextView mOrderId;
 
+    private Bill bill;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bill_detail);
 
-        Bill bill = getIntent().getExtras().getParcelable("bill");
+        bill = getIntent().getExtras().getParcelable("bill");
 
         findViewById(R.id.back_container).setOnClickListener(v -> finish());
 
@@ -95,5 +97,9 @@ public class BillDetailAct extends AppCompatActivity {
         view.setVisibility(View.GONE);
         findViewById(R.id.bill_id_container).setVisibility(View.VISIBLE);
         findViewById(R.id.order_id_container).setVisibility(View.VISIBLE);
+    }
+
+    public void goDeliverPage(View view) {
+        startActivity(new Intent(this, DeliverAct.class).putExtra("id", bill.getExtraId()));
     }
 }

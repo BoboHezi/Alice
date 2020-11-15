@@ -107,7 +107,7 @@
                         android:id="@+id/pay_method"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:maxWidth="280dp"
+                        android:maxWidth="250dp"
                         android:textAlignment="viewEnd"
                         android:textSize="17sp" />
 
@@ -142,7 +142,7 @@
                         android:id="@+id/score"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:maxWidth="280dp"
+                        android:maxWidth="250dp"
                         android:textAlignment="viewEnd"
                         android:textSize="17sp" />
 
@@ -170,7 +170,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:maxWidth="280dp"
+                    android:maxWidth="250dp"
                     android:textAlignment="viewEnd"
                     android:textSize="17sp" />
             </RelativeLayout>
@@ -194,13 +194,14 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:gravity="center"
-                    android:maxWidth="280dp"
+                    android:maxWidth="250dp"
                     android:textAlignment="viewEnd"
                     android:textSize="17sp"
                     tools:ignore="RtlCompat" />
             </RelativeLayout>
 
             <RelativeLayout
+                android:onClick="goDeliverPage"
                 android:id="@+id/logistics_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -224,7 +225,7 @@
                         android:id="@+id/logistics"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:maxWidth="280dp"
+                        android:maxWidth="250dp"
                         android:textAlignment="viewEnd"
                         android:textSize="17sp" />
 
@@ -252,7 +253,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:maxWidth="280dp"
+                    android:maxWidth="250dp"
                     android:textAlignment="viewEnd"
                     android:textSize="17sp" />
             </RelativeLayout>
@@ -276,7 +277,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:maxWidth="280dp"
+                    android:maxWidth="250dp"
                     android:textAlignment="viewEnd"
                     android:textSize="17sp" />
             </RelativeLayout>
@@ -300,7 +301,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:maxWidth="280dp"
+                    android:maxWidth="250dp"
                     android:textAlignment="viewEnd"
                     android:textSize="17sp" />
             </RelativeLayout>
